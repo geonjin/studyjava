@@ -1,22 +1,38 @@
 package main;
 import java.util.Scanner;
 
+import model.Arithmetic;
+import view.Ui;
 
-	
-	
-import model.arithmetic;
+	// user input , 계산 로직 , main,  ui
 
-public class calculator {
+
+public class Calculator {
 
 	public static void main(String[] args) {
-		
-		calculator c1 = new calculator();
-		
 		Scanner sc = new Scanner(System.in);
-		int value = sc.nextInt();
-		int value2 = sc.nextInt();
-		int result =c1.sum(value, value2);
-		System.out.println("�μ��� ����"+ result);
+		Calculator c1 = new Calculator();
+		 Arithmetic ar = new  Arithmetic();
+		 
+		 Ui userui = new Ui();
+		 
+		 userui.startProgram();
+		 userui.menu();
+		 
+		
+		//int value = sc.nextInt();
+		//int value2 = sc.nextInt();
+		//int result =ar.add(value, value2);
+	
+	//다른 변수 가지고 오려면 getter /setter 쓰면 될듯
+		
+		
+		//System.out.println("정수를 입력하시요");
+		//int value4 = sc.nextInt();
+		//int value5 = sc.nextInt();
+		//int result2 =ar.multiply(value5, value4);
+		//System.out.println("두수의 곱은"+ result2);
+		
 		
 	}
 
