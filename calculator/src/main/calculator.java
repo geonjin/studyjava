@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 import model.Arithmetic;
 import view.ui;
-
+import controller.Userinput;
 	// user input , 계산 로직 , main,  ui
 
 
@@ -13,27 +13,14 @@ public class Calculator {
 		Scanner sc = new Scanner(System.in);
 		Calculator c1 = new Calculator();
 		 Arithmetic ar = new  Arithmetic();
-		 
-		 ui userui = new ui();
+		  ui userui = new ui();
+		 Userinput input = new Userinput();
 		 
 		 userui.startProgram();
-		 userui.menu();
-		 
+		 input.userinput();
 		 
 		
-		//int value = sc.nextInt();
-		//int value2 = sc.nextInt();
-		//int result =ar.add(value, value2);
 	
-	//다른 변수 가지고 오려면 getter /setter 쓰면 될듯
-		
-		
-		//System.out.println("정수를 입력하시요");
-		//int value4 = sc.nextInt();
-		//int value5 = sc.nextInt();
-		//int result2 =ar.multiply(value5, value4);
-		//System.out.println("두수의 곱은"+ result2);
-		
 		
 	}
 
