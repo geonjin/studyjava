@@ -2,7 +2,7 @@ package main;
 import java.util.Scanner;
 
 import model.Arithmetic;
-import view.Ui;
+import view.ui;
 
 	// user input , 계산 로직 , main,  ui
 
@@ -14,10 +14,11 @@ public class Calculator {
 		Calculator c1 = new Calculator();
 		 Arithmetic ar = new  Arithmetic();
 		 
-		 Ui userui = new Ui();
+		 ui userui = new ui();
 		 
 		 userui.startProgram();
 		 userui.menu();
+		 
 		 
 		
 		//int value = sc.nextInt();
