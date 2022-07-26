@@ -2,7 +2,10 @@ package model;
 import java.util.Scanner;
 
 public class Arithmetic {
-
+	int[] oprands;
+	public void setOprands(int[] oprands) {
+		
+	}
 	  public int add(int a, int b)
 	  { 
 		  
