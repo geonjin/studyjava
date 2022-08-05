@@ -1,69 +1,62 @@
 package controller;
+
 import java.util.Scanner;
 import model.Arithmetic;
-
-
+import utils.Constants;
+import view.Ui;
 public class Userinput {
 	public void userinput() {
-	Scanner sc = new Scanner(System.in);
-	Arithmetic oper =  new Arithmetic();{
-		Qmsg msg = new Qmsg();
-	
-		
-	loop:
-	for(int i = 0; i<100; i++) { 
+		Scanner sc = new Scanner(System.in);
+		Arithmetic oper = new Arithmetic();
+		Ui ui = new Ui();
+		{
+			boolean isRepeat = true;
 
-		System.out.println("- - - - - - - - -");
-	System.out.println("첫번째 연산할 숫자를 입력하세요");
-	int num1 = sc.nextInt();
-	System.out.println("- - - - - - - - -");
-	System.out.println(" 두번째 연산할 숫자를 입력하세요");
-	int num2 = sc.nextInt();
-	System.out.println("- - - - - - - - -");
-	System.out.println(" 연산자를 입력해 주세요");
-	System.out.println("- - - - - - - - -");
-	String operator = sc.next();
-	//if ((operator.equals("+")) || (operator.equals("-")) || (operator.equals("*")) || (operator.equals("/"))) 
-	
-		if(operator.equals("+")) {
-			int result =oper.add(num1, num2);
-			System.out.printf("%d %s %d = %d 입니다\n",num1,operator,num2,result);
-			System.out.println("- - - - - - - - -");
-		}else if(operator.equals("-")){
-			int result =oper.substract(num1, num2);
-			System.out.printf("%d %s %d = %d 입니다\n",num1,operator,num2,result);
-			System.out.println("- - - - - - - - -");
-		}else if(operator.equals("*")) {
-			int result = oper.multiply(num1, num2);
-			System.out.printf("%d %s %d = %d 입니다\n",num1,operator,num2,result);
-			System.out.println("- - - - - - - - -");	
-		}else if(operator.equals("/")){
-			double result = oper.divide(num1, num2);
-			System.out.printf("%d %s %d = %f 입니다\n",num1,operator,num2,result);
-			System.out.println("- - - - - - - - -");
+			while (isRepeat) {
+				
+				ui.firstnum( );
+				int num1 = sc.nextInt();
+				// 매게 변수로 넘긴다. 객체를 넘기든 할수 있어야함
+				ui.secondnum();
+				int num2 = sc.nextInt();
+				
+				ui.putoperate();
+				String operator = sc.next();
+				
+				oper.move(num1, num2, operator, ui );
+				isRepeat = isReCalculation();
 			}
-		
-		for(int choice = 0; choice < 100; choice++) {
-	
-		System.out.println("계산을 계속하시려면 1번, 계산기를 종료하시고 싶으시면 2번을 눌러 주세요");
-			choice = sc.nextInt();
-			if(choice == 1)
-		    break ;
-			
-		    else if (choice == 2) {
-			System.out.println("계산기를 종료합니다");
-			break loop;
-		    }
-		    else if(choice != 1 && choice != 2 ) {
-				System.out.println("잘 못 입력하셨습니다. 다시 입력해주세요");
-			 		}
-		
-			}
-	
-		}	
 		}
 	}
+	// 회원가입 예외 처리 , DB 구현 , 회원가입시 로그인 정보를 DB로 옮기기(MY SQL사용을 해야함)
+	// 영어 숫자 몇글자 이상 입력해주세요 이정도 ( ID정규식 해보기?, 정규식 쓰임 파악)
+	private boolean isReCalculation() {
+		boolean isReCalculate = true;
+		boolean isChoiceCheck = false;
+
+		while (!isChoiceCheck) {
+			Scanner sc = new Scanner(System.in);
+			int choice;
+			System.out.println("계산을 게속 하시려면 1번, 계산기를 종료하고 싶으시면 2번을 눌러주세요");
+			choice = sc.nextInt();
+
+			switch (choice) {
+			case Constants.CALCULATOR_REPEAT:
+				System.out.println("계산기를 게속합니다");
+				isReCalculate = true;
+				isChoiceCheck = true;
+				break;
+			case Constants.CALCULATOR_STOP:
+				System.out.println("계산기를 종료합니다");
+				isReCalculate = false;
+				isChoiceCheck = true;
+				break;
+			default:
+				System.out.println("잘못 입력하셨습니다 다시 입력해주세요.");
+				isChoiceCheck = false;
+				break;
+			}
+		}
+		return isReCalculate;
+	}
 }
-
-
-
